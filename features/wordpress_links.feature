@@ -3,7 +3,6 @@ Feature: WordPress compatible links
   as a blogger
   I want old links to continue working
 
-  @wip
   Scenario: WordPress compatible links of the /:year/:month/:day/:slug kind
     Given that I have the following blog post:
       | Field        | Value                  |
