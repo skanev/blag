@@ -38,3 +38,13 @@ Feature: Browsing posts
     When I go to the home page
     Then I should see "Leading content"
     But I should not see "Hidden content"
+
+  Scenario: Viewing a post that contains markdown
+    Given the following post exists:
+      | Field   | Value          |
+      | Content | Hello _world_! |
+    When I go to the home page
+    Then I should see the following HTML:
+      """
+      Hello <em>world</em>!
+      """

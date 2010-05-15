@@ -2,6 +2,6 @@
   - @posts.each do |post|
     %li
       %h2= link_to post.title, post
-      = post.leading_text
+      = markdown post.leading_text
 
 = will_paginate @posts
