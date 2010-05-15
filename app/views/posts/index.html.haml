@@ -1,0 +1,4 @@
+%ol.posts
+  - @posts.each do |post|
+    %li
+      %h2= link_to post.title, post

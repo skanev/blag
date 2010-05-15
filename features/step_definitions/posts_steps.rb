@@ -16,6 +16,16 @@ Given 'that I have the following blog post:' do |table|
   post.save!
 end
 
+Given 'the following posts exist:' do |table|
+  table.hashes.each do |row|
+    post = Factory.build(:post)
+    row.each do |field, value|
+      update_post.call post, field, value
+    end
+    post.save!
+  end
+end
+
 Then 'the following blog posts should exist:' do |expected_posts|
   actual_posts = [['Slug', 'Old id', 'Title', 'Published at']] +
       Post.all(:order => 'old_id ASC').map { |p| [p.slug, p.old_id.to_s, p.title, p.published_at.rfc2822] }
