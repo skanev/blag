@@ -10,3 +10,14 @@ describe WordPressLinksController, "GET date_and_slug" do
     response.should redirect_to(post_path(post))
   end
 end
+
+describe WordPressLinksController, "GET old_id" do
+  it "should redirect to a post_path(id) when a post exists" do
+    post = mock_model(Post)
+    Post.should_receive(:find_by_old_id).with('42').and_return post
+
+    get :old_id, :old_id => '42'
+
+    response.should redirect_to(post_path(post))
+  end
+end

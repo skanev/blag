@@ -12,7 +12,6 @@ Feature: WordPress compatible links
     When I go to the address "/2007/02/12/post-1/"
     Then I should see "f1rst p0st"
 
-  @wip
   Scenario: WordPress compatible links of the /?p=:old_id kind
     Given that I have the following blog post:
       | Field  | Value        |
