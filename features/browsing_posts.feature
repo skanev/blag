@@ -30,3 +30,11 @@ Feature: Browsing posts
     When I go to posts page 2
     Then I should see "Post 11"
     And I should see "Post 12"
+
+  Scenario: Viewing leading texts when browsing posts
+    Given the following post exists:
+      | Field   | Value                                      |
+      | Content | Leading content <!--more--> Hidden content |
+    When I go to the home page
+    Then I should see "Leading content"
+    But I should not see "Hidden content"

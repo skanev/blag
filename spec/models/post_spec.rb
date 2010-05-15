@@ -12,6 +12,11 @@ describe Post do
     it { should validate_uniqueness_of(:old_id) }
   end
 
+  it "#leading_text should return everythings before the <!--more--> marker, stripped" do
+    Factory(:post, :content => "leading\ntext <!--more--> hidden\ntext").leading_text.should == "leading\ntext"
+    Factory(:post, :content => "no marker").leading_text.should == "no marker"
+  end
+
   describe "#by_date_and_slug(year, month, day, slug)" do
     it "should return a post matching the given criteria if it exists" do
       post = Factory(:post, :published_at => Chronic.parse("2007-02-12 12:00"), :slug => "post-1")

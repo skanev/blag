@@ -8,4 +8,8 @@ class Post < ActiveRecord::Base
   def self.by_date_and_slug(year, month, day, slug)
     Post.first(:conditions => ["date_trunc('day', published_at) = ? AND slug = ?", "#{year}-#{month}-#{day}", slug])
   end
+
+  def leading_text
+    content.gsub(/<!--\s*more\s*-->.*/m, '').strip
+  end
 end
