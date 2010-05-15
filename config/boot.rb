@@ -112,7 +112,13 @@ class Rails::Boot
 
     Rails::Initializer.class_eval do
       def load_gems
-        @bundler_loaded ||= Bundler.require :default, Rails.env
+        @bundler_loaded ||= begin
+          if Rails.env == 'cucumber'
+            Bundler.require :default, :test, :cucumber
+          else
+            Bundler.require :default, Rails.env
+          end
+        end
       end
     end
 
