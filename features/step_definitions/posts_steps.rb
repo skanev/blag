@@ -1,4 +1,4 @@
-Given /^that I have the following blog post:$/ do |table|
+Given 'that I have the following blog post:' do |table|
   post = Post.new
   table.hashes.each do |row|
     field, value = row.fetch('Field'), row.fetch('Value')
@@ -11,4 +11,11 @@ Given /^that I have the following blog post:$/ do |table|
     end
   end
   post.save!
+end
+
+Then 'the following blog posts should exist:' do |expected_posts|
+  actual_posts = [['Slug', 'Old id', 'Title', 'Published at']] +
+      Post.all(:order => 'old_id ASC').map { |p| [p.slug, p.old_id.to_s, p.title, p.published_at.rfc2822] }
+
+  expected_posts.diff!(actual_posts)
 end

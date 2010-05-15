@@ -2,6 +2,7 @@ source :gemcutter
 
 gem "rails", "~> 2.3.5"
 gem "haml", ">= 3.0.3"
+gem "nokogiri"
 gem "pg"
 
 group :test do
