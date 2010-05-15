@@ -14,6 +14,8 @@ module NavigationHelpers
       $1
     when /posts page (\d+)/
       "/posts/page/#$1"
+    when /the post titled "(.*)"/
+      post_path(Post.find_by_title!($1))
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

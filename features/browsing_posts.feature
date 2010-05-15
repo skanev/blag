@@ -48,3 +48,16 @@ Feature: Browsing posts
       """
       Hello <em>world</em>!
       """
+
+  Scenario: Viewing a post
+    Given the following post exists:
+      | Field   | Value                         |
+      | Title   | Do or do not                  |
+      | Content | There is <!--more--> _no_ try |
+    When I go to the post titled "Do or do not"
+    Then I should see "Do or do not"
+    And I should see "There is no try"
+    And I should see the following HTML:
+      """
+      <em>no</em> try
+      """
