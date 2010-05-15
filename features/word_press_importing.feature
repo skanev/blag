@@ -14,12 +14,14 @@ Feature: Importing from WordPress
               <pubDate>Fri, 09 Mar 2007 16:47:04 +0000</pubDate>
               <wp:post_id>20</wp:post_id>
               <wp:post_name>software-metaphors</wp:post_name>
+              <wp:post_type>post</wp:post_type>
             </item>
             <item>
               <title>Legacy</title>
               <pubDate>Mon, 27 Apr 2009 23:59:30 +0200</pubDate>
               <wp:post_id>216</wp:post_id>
               <wp:post_name>legacy</wp:post_name>
+              <wp:post_type>post</wp:post_type>
             </item>
           </channel>
         </rss>

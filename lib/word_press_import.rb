@@ -3,6 +3,7 @@ module WordPressImport
     def import_file(file_path)
       open(file_path, "r") do |file|
         Nokogiri::XML(file).xpath("//item").each do |item|
+          next if item.xpath("wp:post_type").text != 'post'
           Post.create! do |post|
             post.title        = item.xpath("title").text
             post.slug         = item.xpath("wp:post_name").text
