@@ -2,7 +2,7 @@ update_post = lambda do |post, field, value|
   case field
     when 'Title'        then post.title = value
     when 'Slug'         then post.slug = value
-    when 'Published at' then post.published_at = Time.parse(value)
+    when 'Published at' then post.published_at = Chronic.parse(value)
     when 'Old id'       then post.old_id = value
     else raise "Unknown field: #{field}"
   end

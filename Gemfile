@@ -12,6 +12,7 @@ group :test do
   gem "shoulda", ">= 2.10.3"
   gem "factory_girl", ">= 1.2.4"
   gem "spork"
+  gem "chronic"
 end
 
 group :cucumber do

@@ -5,10 +5,10 @@ Feature: WordPress compatible links
 
   Scenario: WordPress compatible links of the /:year/:month/:day/:slug kind
     Given that I have the following blog post:
-      | Field        | Value                  |
-      | Title        | f1rst p0st             |
-      | Slug         | post-1                 |
-      | Published at | 12 february 2007 12:00 |
+      | Field        | Value            |
+      | Title        | f1rst p0st       |
+      | Slug         | post-1           |
+      | Published at | 2007-02-12 12:00 |
     When I go to the address "/2007/02/12/post-1/"
     Then I should see "f1rst p0st"
 
