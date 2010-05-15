@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100514182029) do
+ActiveRecord::Schema.define(:version => 20100515161326) do
 
   create_table "posts", :force => true do |t|
     t.text     "title",        :null => false
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20100514182029) do
     t.integer  "old_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "content",      :null => false
   end
 
   add_index "posts", ["old_id"], :name => "index_posts_on_old_id", :unique => true

@@ -12,6 +12,7 @@ Feature: Importing from WordPress
             <item>
               <title>Software metaphors</title>
               <pubDate>Fri, 09 Mar 2007 16:47:04 +0000</pubDate>
+              <content:encoded><![CDATA[Metaphors of software]]></content:encoded>
               <wp:post_id>20</wp:post_id>
               <wp:post_name>software-metaphors</wp:post_name>
               <wp:post_type>post</wp:post_type>
@@ -19,6 +20,7 @@ Feature: Importing from WordPress
             <item>
               <title>Legacy</title>
               <pubDate>Mon, 27 Apr 2009 23:59:30 +0200</pubDate>
+              <content:encoded><![CDATA[Poor coder's legacy]]></content:encoded>
               <wp:post_id>216</wp:post_id>
               <wp:post_name>legacy</wp:post_name>
               <wp:post_type>post</wp:post_type>
@@ -27,7 +29,6 @@ Feature: Importing from WordPress
         </rss>
     """
     Then the following blog posts should exist:
-      | Slug               | Old id | Title              | Published at                    |
-      | software-metaphors | 20     | Software metaphors | Fri, 09 Mar 2007 16:47:04 +0000 |
-      | legacy             | 216    | Legacy             | Mon, 27 Apr 2009 21:59:30 +0000 |
-
+      | Slug               | Old id | Title              | Content               | Published at                    |
+      | software-metaphors | 20     | Software metaphors | Metaphors of software | Fri, 09 Mar 2007 16:47:04 +0000 |
+      | legacy             | 216    | Legacy             | Poor coder's legacy   | Mon, 27 Apr 2009 21:59:30 +0000 |

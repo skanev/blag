@@ -4,7 +4,7 @@ Feature: WordPress compatible links
   I want old links to continue working
 
   Scenario: WordPress compatible links of the /:year/:month/:day/:slug kind
-    Given that I have the following blog post:
+    Given the following post exists:
       | Field        | Value            |
       | Title        | f1rst p0st       |
       | Slug         | post-1           |
@@ -13,7 +13,7 @@ Feature: WordPress compatible links
     Then I should see "f1rst p0st"
 
   Scenario: WordPress compatible links of the /?p=:old_id kind
-    Given that I have the following blog post:
+    Given the following post exists:
       | Field  | Value        |
       | Title  | chunky bacon |
       | Old id | 42           |
