@@ -9,7 +9,7 @@ update_post = lambda do |post, field, value|
 end
 
 Given 'that I have the following blog post:' do |table|
-  post = Post.new
+  post = Factory.build(:post)
   table.hashes.each do |row|
     update_post.call post, row.fetch('Field'), row.fetch('Value')
   end
