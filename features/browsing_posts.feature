@@ -12,5 +12,21 @@ Feature: Browsing posts
     Then I should see "Chunky bacon"
     And I should see "Spam and eggs"
 
-
-
+  Scenario: Paginating posts
+    Given the following posts exist:
+      | Title   | Published at |
+      | Post 1  | 1 day ago    |
+      | Post 2  | 2 days ago   |
+      | Post 3  | 3 days ago   |
+      | Post 4  | 4 days ago   |
+      | Post 5  | 5 days ago   |
+      | Post 6  | 6 days ago   |
+      | Post 7  | 7 days ago   |
+      | Post 8  | 8 days ago   |
+      | Post 9  | 9 days ago   |
+      | Post 10 | 10 days ago  |
+      | Post 11 | 11 days ago  |
+      | Post 12 | 12 years ago |
+    When I go to posts page 2
+    Then I should see "Post 11"
+    And I should see "Post 12"

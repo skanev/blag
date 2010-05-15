@@ -12,6 +12,8 @@ module NavigationHelpers
       '/'
     when /the address "(.*)"/
       $1
+    when /posts page (\d+)/
+      "/posts/page/#$1"
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

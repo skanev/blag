@@ -2,9 +2,17 @@ require 'spec_helper'
 
 describe PostsController, "GET index" do
   it "should assign all posts to @posts" do
-    Post.should_receive(:all).and_return 'posts'
+    Post.stub_chain :reverse_chronological, :paginate => 'posts'
     get :index
     assigns[:posts].should == 'posts'
+  end
+
+  it "should pass params[:page] to .paginate" do
+    posts = mock('posts')
+    Post.stub :reverse_chronological => posts
+    posts.should_receive(:paginate).with(hash_including(:page => '42'))
+
+    get :index, :page => '42'
   end
 end
 
