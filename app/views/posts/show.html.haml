@@ -1,2 +1,15 @@
 %h2= link_to @post.title, @post
 = markdown @post.content
+
+- unless @post.comments.empty?
+  %h2 Коментари
+  %ol#comments
+    - @post.comments.each do |comment|
+      %li
+        %p.author
+          - if comment.url.present?
+            = link_to h(comment.author), comment.url
+          - else
+            &= comment.author
+        %p.created-at= comment.created_at
+        .content= simple_format auto_link(comment.content)

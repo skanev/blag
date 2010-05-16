@@ -34,3 +34,10 @@ ol.posts {
     color: #777777;
   }
 }
+
+#comments {
+  li {
+    .author { margin-bottom: 0; }
+    p.created-at { margin-top: 0; font-size: small; color: #777777; }
+  }
+}

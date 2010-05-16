@@ -61,3 +61,16 @@ Feature: Browsing posts
       """
       <em>no</em> try
       """
+
+  Scenario: Viewing the comments of a post
+    Given the following post exists:
+      | Field | Value      |
+      | Title | Wise words |
+    And the post "Wise words" has the following comments:
+      | Author    | Url                            | Content                               |
+      | Aristotle | http://artistotle.example.org/ | A is A!                               |
+      | Plato     |                                | Necessity... the mother of invention. |
+    When I go to the post titled "Wise words"
+    Then I should see "A is A!"
+    And I should see "Necessity... the mother of invention."
+    # And I should see a link to "http://aristotle.example.org/"

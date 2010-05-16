@@ -27,6 +27,14 @@ Given 'the following posts exist:' do |table|
   end
 end
 
+Given 'the post "$title" has the following comments:' do |title, table|
+  post = Post.find_by_title!(title)
+  table.hashes.each do |row|
+    attributes = row.keys.inject({}) { |h, v| h[v.underscore] = row[v]; h }
+    post.comments.create! Factory.attributes_for(:comment).stringify_keys.merge(attributes)
+  end
+end
+
 Then 'the following blog posts should exist:' do |expected_posts|
   actual_posts = [['Slug', 'Old id', 'Title', 'Content', 'Published at']] +
       Post.all(:order => 'old_id ASC').map { |p| [p.slug, p.old_id.to_s, p.title, p.content, p.published_at.rfc2822] }
