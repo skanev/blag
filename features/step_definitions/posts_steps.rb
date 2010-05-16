@@ -37,3 +37,16 @@ end
 Then 'the post "$title" should have the following content:' do |title, content|
   Post.find_by_title!(title).content.strip.should == content.strip
 end
+
+Then 'the post "$title" should have the following comments:' do |title, expected_table|
+  comment_rows = Post.find_by_title!(title).comments.all(:order => 'created_at ASC').map do |comment|
+    expected_table.raw.first.map do |header|
+      case header
+        when 'Created at' then comment.created_at.to_formatted_s(:db)
+        else comment.send(header.underscore)
+      end
+    end
+  end
+
+  expected_table.diff!([expected_table.raw.first] + comment_rows)
+end
