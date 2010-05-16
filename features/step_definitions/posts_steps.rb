@@ -33,3 +33,7 @@ Then 'the following blog posts should exist:' do |expected_posts|
 
   expected_posts.diff!(actual_posts)
 end
+
+Then 'the post "$title" should have the following content:' do |title, content|
+  Post.find_by_title!(title).content.strip.should == content.strip
+end
