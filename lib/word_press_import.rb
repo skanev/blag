@@ -5,8 +5,7 @@ module WordPressImport
         document = Nokogiri::XML(file)
         base_url = document.xpath("/rss/channel/wp:base_blog_url").text
 
-        document.xpath("//item").each do |item|
-          next if item.xpath("wp:post_type").text != 'post'
+        document.xpath("//item[wp:post_type[text() = 'post']]").each do |item|
           post = Post.create! do |post|
             post.title        = item.xpath("title").text
             post.content      = convert_internal_links base_url, item.xpath("content:encoded").text
