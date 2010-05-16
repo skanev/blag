@@ -1,7 +1,8 @@
 %ol.posts
   - @posts.each do |post|
-    %li
+    %li.post
       %h2= link_to post.title, post
+      %p.published-at= post.published_at
       = markdown post.leading_text
 
 = will_paginate @posts
