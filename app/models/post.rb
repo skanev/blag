@@ -5,6 +5,8 @@ class Post < ActiveRecord::Base
 
   named_scope :reverse_chronological, :order => 'published_at DESC'
 
+  has_many :comments
+
   def self.by_date_and_slug(year, month, day, slug)
     Post.first(:conditions => ["date_trunc('day', published_at) = ? AND slug = ?", "#{year}-#{month}-#{day}", slug])
   end

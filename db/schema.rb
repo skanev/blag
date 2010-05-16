@@ -9,7 +9,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100515161326) do
+ActiveRecord::Schema.define(:version => 20100516100745) do
+
+  create_table "comments", :force => true do |t|
+    t.integer  "post_id",    :null => false
+    t.string   "author",     :null => false
+    t.string   "email",      :null => false
+    t.string   "url"
+    t.string   "ip",         :null => false
+    t.text     "content",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["post_id"], :name => "index_comments_on_post_id"
 
   create_table "posts", :force => true do |t|
     t.text     "title",        :null => false
