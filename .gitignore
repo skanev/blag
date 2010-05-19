@@ -1,5 +1,6 @@
 tmp
 log
 .bundle
+.idea
 
 public/stylesheets/blag.css
