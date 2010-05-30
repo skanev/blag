@@ -20,8 +20,14 @@ Feature: Commenting posts
       | Author        | Email            | Url                      | Approved | Content        |
       | Bart Simpsons | bart@example.org | http://bart.example.org/ | false    | Eat my shorts! |
 
-  Scenario: Leaving out a required field when commenting
+  Scenario Outline: Leaving out a required field when commenting
     Given a blog post exists
-    And I attempt to leave a comment, forgetting to fill in "Name"
+    And I attempt to leave a comment, forgetting to fill in "<Required field>"
     Then I should see "There was an error in your comment"
     And I should see my previous input in the comment form
+
+    Examples:
+      | Required field |
+      | Name           |
+      | E-mail         |
+      | Comment        |

@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  validates_presence_of :post_id, :author, :email, :ip
+  validates_presence_of :post_id, :author, :email, :ip, :content
 
   before_validation :sanitize_content
 

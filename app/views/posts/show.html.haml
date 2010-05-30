@@ -1,24 +1,7 @@
 %h2= link_to @post.title, @post
 = markdown @post.content
 
-#leave-comment
-  %h2 Остави коментар
-  - form_for [@post, @new_comment || Comment.new] do |form|
-    - if @new_comment
-      %p There was an error in your comment
-    = form.label :author, 'Name'
-    = form.text_field :author
-
-    = form.label :email, 'E-mail'
-    = form.text_field :email
-
-    = form.label :url, 'Site'
-    = form.text_field :url
-
-    = form.label :content, 'Comment'
-    = form.text_area :content
-
-    = form.submit 'Leave a comment'
+= render :partial => "posts/comment_form", :locals => {:post => @post, :new_comment => @new_comment}
 
 - unless @post.comments.empty?
   %h2 Коментари

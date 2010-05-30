@@ -7,6 +7,7 @@ describe Comment do
   it { should validate_presence_of(:author) }
   it { should validate_presence_of(:email) }
   it { should validate_presence_of(:ip) }
+  it { should validate_presence_of(:content) }
 
   it "should sanitize #content on create" do
     CommentSanitizer.stub(:clean).with('tainted content').and_return('clean content')

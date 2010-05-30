@@ -1,0 +1,18 @@
+#leave-comment
+  %h2 Остави коментар
+  - form_for [post, new_comment || Comment.new] do |form|
+    - if new_comment.present?
+      %p There was an error in your comment
+    = form.label :author, 'Name'
+    = form.text_field :author
+
+    = form.label :email, 'E-mail'
+    = form.text_field :email
+
+    = form.label :url, 'Site'
+    = form.text_field :url
+
+    = form.label :content, 'Comment'
+    = form.text_area :content
+
+    = form.submit 'Leave a comment'
