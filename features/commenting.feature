@@ -19,3 +19,9 @@ Feature: Commenting posts
     And the post "Infinite wisdom" should have the following comments:
       | Author        | Email            | Url                      | Approved | Content        |
       | Bart Simpsons | bart@example.org | http://bart.example.org/ | false    | Eat my shorts! |
+
+  Scenario: Leaving out a required field when commenting
+    Given a blog post exists
+    And I attempt to leave a comment, forgetting to fill in "Name"
+    Then I should see "There was an error in your comment"
+    And I should see my previous input in the comment form

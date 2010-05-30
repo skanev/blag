@@ -1,9 +1,11 @@
 %h2= link_to @post.title, @post
 = markdown @post.content
 
-.leave-comment
+#leave-comment
   %h2 Остави коментар
-  - form_for [@post, Comment.new] do |form|
+  - form_for [@post, @new_comment || Comment.new] do |form|
+    - if @new_comment
+      %p There was an error in your comment
     = form.label :author, 'Name'
     = form.text_field :author
 
