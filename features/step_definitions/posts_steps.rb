@@ -51,7 +51,7 @@ Then 'the post "$title" should have the following comments:' do |title, expected
     expected_table.raw.first.map do |header|
       case header
         when 'Created at' then comment.created_at.to_formatted_s(:db)
-        else comment.send(header.underscore)
+        else comment.send(header.underscore).to_s
       end
     end
   end

@@ -19,4 +19,8 @@ describe Comment do
     comment.update_attributes! :content => 'tainted content'
     comment.reload.content.should == 'clean content'
   end
+
+  it "should be pendning by default" do
+    Comment.new.should_not be_approved
+  end
 end

@@ -5,4 +5,7 @@
 %body
   #container
     %h1 Blogging like it's '99
+    - if flash[:notice].present?
+      #flash
+        .notice&= flash[:notice]
     = yield

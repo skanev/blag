@@ -1,6 +1,23 @@
 %h2= link_to @post.title, @post
 = markdown @post.content
 
+.leave-comment
+  %h2 Остави коментар
+  - form_for [@post, Comment.new] do |form|
+    = form.label :author, 'Name'
+    = form.text_field :author
+
+    = form.label :email, 'E-mail'
+    = form.text_field :email
+
+    = form.label :url, 'Site'
+    = form.text_field :url
+
+    = form.label :content, 'Comment'
+    = form.text_area :content
+
+    = form.submit 'Leave a comment'
+
 - unless @post.comments.empty?
   %h2 Коментари
   %ol#comments

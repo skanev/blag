@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.connect "/posts/page/:page", :controller => :posts, :action => :index, :page => /\d+/
-  map.resources :posts
+  map.resources :posts, :has_many => :comments
 
   map.word_press_date_and_slug ":year/:month/:day/:slug",
                                :controller => :word_press_links,
